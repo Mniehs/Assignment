@@ -1,0 +1,32 @@
+#!/bin/bash
+#function to calculate tax
+calculate tax(){
+if(($(echo "basic_pay>70000"|bc-1));then
+tax=$(echo "scale=2; $basic_pay*0.25"|bc)
+elif(($(echo "$basic_pay>15000 && $basic_pay<=70000"bc)
+tax=$(echo "scale=2; $basic_pay*0.15"|bc)
+ele
+tax=0
+fi
+}
+#prompt the user to enter details
+read -p "enter employee name:"employee_name
+read -p "enter hours worked:"hours_worked
+read -p "enter the rate of work per hour:"rate_per_hour
+#calculate basic pay
+basic_pay=$(echo "$hours_worked*$rate_per_hour"|bc)
+#calculate tax based on net pay
+if["$basic_pay -gt 70000"];then
+tax=$(basic_pay*25/100)
+elif[$basic_pay -gt 15000] && [$basic_pay -le 70000];then
+tax=$(basic-pay*15/100)
+else
+tax=0
+fi
+#calculate net pay
+net_pay=$(basic_pay-tax)
+#display results
+echo "employee name:$employee_name"
+echo "hours worked:$hours_worked"
+echo "rate per hour:$rate_per_hour"
+echo "basic pay:$basic_pay"
